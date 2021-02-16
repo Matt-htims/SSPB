@@ -18,6 +18,15 @@ function App() {
 	const [menuToggle, setMenuToggle] = useState(false);
 	const toggle = () => setMenuToggle(!menuToggle);
 
+	//	When mobile menu is open the overflow is hidden to get rid of the scroll
+	//	Normally shouldn't manipulate dom in this way as it goes against react
+	//	However we are manipulating parent of what react is manipulating (App) so it is ok
+	if (menuToggle) {
+		document.body.style.overflow = 'hidden';
+	} else {
+		document.body.style.overflow = 'auto';
+	}
+
 	return (
 		<Router>
 			<Navbar click={toggle} show={menuToggle} />
