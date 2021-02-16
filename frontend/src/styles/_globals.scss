@@ -1,0 +1,43 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	background: $mainWhite;
+}
+
+img {
+	width: 100%;
+	object-fit: contain;
+}
+
+a {
+	text-decoration: none;
+	color: $mainBlack;
+
+	:visited {
+		text-decoration: none;
+		color: $mainBlack;
+	}
+
+	:active {
+		color: $mainBlack;
+	}
+}
+
+// Visibility
+
+.hide-for-mobile {
+	@include breakpoint-down(medium) {
+		display: none;
+	}
+}
+
+.hide-for-desktop {
+	@include breakpoint-up(large) {
+		display: none;
+	}
+}

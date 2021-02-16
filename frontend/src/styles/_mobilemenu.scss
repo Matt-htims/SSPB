@@ -1,0 +1,10 @@
+.mobilemenu {
+	position: absolute;
+	z-index: 30;
+	width: 70%;
+	height: 50vh;
+	left: 50%;
+	transform: translateX(-50%);
+	background: $mainWhite;
+	margin-top: 1.5rem;
+}
