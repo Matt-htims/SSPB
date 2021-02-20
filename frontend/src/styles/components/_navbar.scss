@@ -1,7 +1,4 @@
 .navbar {
-	position: sticky;
-	top: 0;
-	left: 0;
 	width: 100%;
 	height: rem(64px);
 	display: flex;
@@ -28,11 +25,15 @@
 
 	&__logo {
 		height: rem(49px);
+		transition: transform 200ms;
+
+		&:hover {
+			transform: scale(1.1);
+		}
 	}
 
 	&__links {
 		display: flex;
-		list-style: none;
 		align-items: center;
 
 		li {
@@ -75,6 +76,7 @@
 	&__toggle {
 		//Display of none for when on fullscreen
 		display: none;
+		cursor: pointer;
 		> span {
 			display: block;
 			width: 40px;
@@ -91,6 +93,9 @@
 }
 
 @media (max-width: 960px) {
+	.navbar {
+		padding: 0rem rem(30);
+	}
 	.navbar__links {
 		display: none;
 	}
@@ -104,4 +109,10 @@
 	&::before {
 		opacity: 1;
 	}
+}
+
+.sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
 }

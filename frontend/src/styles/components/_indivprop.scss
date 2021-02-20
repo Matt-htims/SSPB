@@ -1,0 +1,156 @@
+.indivprop {
+	width: 70%;
+	height: 70%;
+	position: fixed;
+	left: 15%;
+	background: $mainWhite;
+	z-index: 43;
+
+	&__container {
+		margin-top: rem(30);
+		margin-left: rem(30);
+		margin-right: rem(30);
+		height: 95%;
+	}
+
+	&__image {
+		height: 75%;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #090607;
+
+		img {
+			height: 80%;
+			transform: rotate(90deg);
+		}
+	}
+
+	.text {
+		height: 25%;
+		background-color: $mainWhite;
+
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	&__textcontainer {
+		width: 100%;
+
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__lefttext {
+		flex: 3;
+		h4 {
+			font-size: rem(28);
+			font-weight: 700;
+			letter-spacing: rem(3.6px);
+			margin-bottom: 5%;
+		}
+		p {
+			margin-top: 5%;
+			font-size: rem(18);
+			font-weight: 300;
+			color: #1d1d1d;
+		}
+
+		.size {
+			color: #575757;
+		}
+	}
+
+	&__righttext {
+		flex: 2;
+		.cost {
+			text-align: end;
+			font-size: rem(28);
+			font-weight: 500;
+			color: #1d1d1d;
+		}
+	}
+}
+
+@media (max-width: 1100px) {
+	.indivprop {
+		height: 50%;
+
+		&__container {
+			margin-top: rem(20);
+			margin-left: rem(20);
+			margin-right: rem(20);
+		}
+
+		&__lefttext {
+			h4 {
+				font-size: rem(15);
+				letter-spacing: rem(3.6px);
+				margin-bottom: rem(15);
+			}
+			p {
+				margin-top: rem(10);
+				font-size: rem(13);
+				font-weight: 300;
+				color: #1d1d1d;
+			}
+
+			.size {
+				color: #575757;
+			}
+		}
+
+		&__righttext {
+			.cost {
+				font-size: rem(16);
+				font-weight: 500;
+				color: #1d1d1d;
+			}
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.indivprop {
+		width: 88%;
+		left: 6%;
+		text-align: center;
+		&__textcontainer {
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		&__righttext {
+			.cost {
+				padding-top: rem(14);
+				text-align: center;
+			}
+		}
+	}
+}
+
+@media (min-width: 1460px) {
+	.indivprop {
+		height: 70%;
+		width: 60%;
+		left: 20%;
+	}
+}
+
+@media (min-width: 2000px) {
+	.indivprop {
+		height: 70%;
+		width: 50%;
+		left: 25%;
+	}
+}
+
+@media (min-width: 2600px) {
+	.indivprop {
+		height: 70%;
+		width: 40%;
+		left: 30%;
+	}
+}

@@ -1,7 +1,25 @@
 import React from 'react';
 
-const Backdrop = ({ show, click }) => {
-	return show ? <div className="backdrop" onClick={click}></div> : null;
+import { useHistory } from 'react-router-dom';
+
+const Backdrop = ({ show, click, propShow, setMenuToggle }) => {
+	const history = useHistory();
+	const showElement = show || propShow;
+
+	const close = () => setMenuToggle(false);
+
+	const showHandler = e => {
+		if (propShow) {
+			history.push('/props');
+			close();
+		} else {
+			close();
+		}
+	};
+
+	return showElement ? (
+		<div className="backdrop" onClick={showHandler}></div>
+	) : null;
 };
 
 export default Backdrop;

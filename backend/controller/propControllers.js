@@ -11,6 +11,16 @@ const getAllProps = async (req, res) => {
 	}
 };
 
+const getPropsByCat = async (req, res) => {
+	try {
+		const props = await Prop.find({ type: req.query.q });
+
+		res.json(props);
+	} catch (error) {
+		res.status(500).json({ message: 'Server Error' });
+	}
+};
+
 const getPropById = async (req, res) => {
 	try {
 		const prop = await Prop.findById(req.params.id);
@@ -24,5 +34,6 @@ const getPropById = async (req, res) => {
 
 module.exports = {
 	getAllProps,
+	getPropsByCat,
 	getPropById,
 };

@@ -25,6 +25,7 @@ const propSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	_id: { type: mongoose.SchemaTypes.ObjectId, ref: 'prop' },
 });
 
 const Prop = mongoose.model('prop', propSchema);

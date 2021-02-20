@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-import logo from '../Logo.svg';
+import logo from '../public/Logo.svg';
 
 const Navbar = ({ click, show }) => {
 	return (
-		<nav className={`navbar ${show ? 'open' : ''}`}>
+		<nav className="navbar sticky">
 			<div className="navbar__logo">
 				<Link to="/">
 					<img src={logo} alt="" />
@@ -19,11 +19,11 @@ const Navbar = ({ click, show }) => {
 				</li>
 			</ul>
 
-			<a onClick={click} className="navbar__toggle " href="#">
+			<div onClick={click} className="navbar__toggle">
 				<span></span>
 				<span></span>
 				<span></span>
-			</a>
+			</div>
 		</nav>
 	);
 };
