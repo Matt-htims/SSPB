@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 
 //	Redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -11,8 +11,9 @@ import {
 } from '../redux/actions/propActions';
 
 //	Components
-import Prop from '../components/Prop';
+// import Prop from '../components/Prop';
 import IndivProp from '../components/IndivProp';
+const Prop = lazy(() => import('../components/Prop'));
 
 const PropsScreen = ({ setPropToggle }) => {
 	const { id } = useParams();
@@ -129,13 +130,15 @@ const PropsScreen = ({ setPropToggle }) => {
 					<h2>{error}</h2>
 				) : (
 					props.map(prop => (
-						<Prop
-							propId={prop._id}
-							key={prop._id}
-							propCode={prop.code}
-							description={prop.description}
-							number={prop.number}
-						/>
+						<Suspense fallback={<div>Loading...</div>}>
+							<Prop
+								propId={prop._id}
+								key={prop._id}
+								propCode={prop.code}
+								description={prop.description}
+								number={prop.number}
+							/>
+						</Suspense>
 					))
 				)}
 			</div>
