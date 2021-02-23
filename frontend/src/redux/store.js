@@ -7,9 +7,12 @@ import {
 	getPropDetailsReducer,
 } from './reducers/propReducers';
 
+import { categoryReducer } from './reducers/categoryReducers';
+
 const reducer = combineReducers({
 	getProps: getPropsReducer,
 	getPropDetails: getPropDetailsReducer,
+	currentCategory: categoryReducer,
 });
 
 const middleware = [thunk];

@@ -1,31 +1,15 @@
 import { useParams, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-
-//	Redux
-import { useSelector, useDispatch } from 'react-redux';
-
-//	Actions
-import {
-	getProps as listProps,
-	getPropsByCat,
-} from '../redux/actions/propActions';
+import { useEffect } from 'react';
 
 //	Components
-import Prop from '../components/Prop';
 import IndivProp from '../components/IndivProp';
+import PropscreenMobileNavigation from '../components/PropscreenMobileNavigation';
+import PropscreenNavigation from '../components/PropscreenNavigation';
+import PropscreenPropContainer from '../components/PropscreenPropContainer';
+import InfiniteScroll from '../components/Scroller';
 
 const PropsScreen = ({ setPropToggle }) => {
 	const { id } = useParams();
-	const dispatch = useDispatch();
-
-	const getProps = useSelector(state => state.getProps);
-	const { props, loading, error } = getProps;
-
-	const propDetails = useSelector(state => state.getPropDetails);
-
-	useEffect(() => {
-		dispatch(listProps());
-	}, [dispatch]);
 
 	useEffect(() => {
 		if (id) {
@@ -35,110 +19,22 @@ const PropsScreen = ({ setPropToggle }) => {
 		}
 	});
 
-	//	Handlers
-	const searchByCategoryHandler = (q1, q2, q3, q4) => {
-		dispatch(getPropsByCat(q1, q2, q3, q4));
-	};
-
-	const searchAllHandler = () => {
-		dispatch(listProps());
-	};
+	useEffect(() => {
+		window.scrollTo(
+			0,
+			document.querySelector('.propsscreen__title').scrollHeight
+		);
+	});
 
 	return (
 		<div className="propsscreen">
 			{id && <IndivProp />}
 			<h2 className="propsscreen__title">The Collection</h2>
-			<div className="propsscreen__links">
-				<div className="propsscreen__linksone">
-					<ul>
-						<li onClick={searchAllHandler}>All</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('ST', 'M');
-							}}
-						>
-							Marble &amp; Stone
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('MS');
-							}}
-						>
-							Metal Surfaces
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('MM', 'MO', 'MW', 'MCT');
-							}}
-						>
-							Miscellaneous
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('PB');
-							}}
-						>
-							Painted Backgrounds
-						</li>
-					</ul>
-				</div>
-				<div className="propsscreen__linkstwo">
-					<ul>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('PMT');
-							}}
-						>
-							Painted Metal Tables
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('PWS');
-							}}
-						>
-							Painted Woods
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('T');
-							}}
-						>
-							Tables
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('BB', 'IPB');
-							}}
-						>
-							Wood Boards
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('WTT');
-							}}
-						>
-							Wood Table Tops
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div className="propsscreen__props">
-				{loading ? (
-					<h2>Loading...</h2>
-				) : error ? (
-					<h2>{error}</h2>
-				) : (
-					props.map(prop => (
-						<Prop
-							propId={prop._id}
-							key={prop._id}
-							propCode={prop.code}
-							description={prop.description}
-							number={prop.number}
-						/>
-					))
-				)}
-			</div>
+			<PropscreenMobileNavigation />
+			<PropscreenNavigation />
+			<PropscreenPropContainer />
+			{/* <InfiniteScroll /> */}
+			<div className="propsscreen__white"></div>
 		</div>
 	);
 };

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const aggregatePaginate = require('mongoose-aggregate-paginate-v2');
 
 const propSchema = new mongoose.Schema({
 	type: {
@@ -27,6 +28,8 @@ const propSchema = new mongoose.Schema({
 	},
 	_id: { type: mongoose.SchemaTypes.ObjectId, ref: 'prop' },
 });
+
+propSchema.plugin(aggregatePaginate);
 
 const Prop = mongoose.model('prop', propSchema);
 

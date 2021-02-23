@@ -9,9 +9,11 @@
 		position: absolute;
 		display: block;
 		right: -21px;
+		bottom: 0px;
 		height: 700px;
 		width: 1px;
 		background-color: $mainBlack;
+		z-index: 1;
 	}
 
 	&__image {

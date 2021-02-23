@@ -1,10 +1,12 @@
 .indivprop {
 	width: 70%;
 	height: 70%;
+	min-height: rem(400);
 	position: fixed;
 	left: 15%;
 	background: $mainWhite;
 	z-index: 43;
+	top: rem(100);
 
 	&__container {
 		margin-top: rem(30);

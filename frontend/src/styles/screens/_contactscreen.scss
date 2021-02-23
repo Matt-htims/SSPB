@@ -1,0 +1,115 @@
+.contactscreen {
+	min-height: 95vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+	color: #262626;
+	font-size: rem(20);
+	letter-spacing: rem(1.4);
+
+	&__container {
+		width: rem(1400);
+		padding-bottom: rem(80);
+	}
+
+	&__title {
+		display: flex;
+		align-items: center;
+		padding-bottom: rem(45);
+		border-bottom: 1px solid #1e1e1e;
+
+		img {
+			height: rem(73);
+			width: rem(73);
+		}
+
+		h2 {
+			font-size: rem(50);
+			font-weight: 700;
+			letter-spacing: rem(1.75);
+			color: #090607;
+			padding-left: rem(30);
+		}
+	}
+
+	&__main {
+		display: flex;
+		align-items: center;
+		padding-top: rem(50);
+
+		img {
+			width: rem(80);
+			height: rem(40);
+			padding-right: rem(40);
+		}
+	}
+
+	&__contact {
+		flex: 1;
+	}
+
+	&__phone {
+		padding-bottom: rem(40);
+
+		a {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	&__email {
+		padding-bottom: rem(40);
+
+		a {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	&__location {
+		display: flex;
+
+		p {
+			&:not(:last-child) {
+				padding-bottom: rem(5);
+			}
+		}
+	}
+
+	&__map {
+		flex: 1.35;
+		height: 500px;
+		width: 500px;
+		background-color: red;
+
+		//shadow
+		-webkit-box-shadow: 2px 10px 15px 2px rgba(0, 0, 0, 0.4); /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+		-moz-box-shadow: 2px 10px 15px 2px rgba(0, 0, 0, 0.4); /* Firefox 3.5 - 3.6 */
+		box-shadow: 2px 8px 15px 2px rgba(0, 0, 0, 0.4); /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+	}
+}
+
+@media (max-width: 960px) {
+	.contactscreen {
+		&__main {
+			display: block;
+		}
+
+		&__contact {
+			padding-bottom: rem(50);
+		}
+
+		&__map {
+			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 1500px) {
+	.contactscreen {
+		&__container {
+			width: 90%;
+		}
+	}
+}

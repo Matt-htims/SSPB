@@ -24,7 +24,7 @@
 			content: '';
 			display: block;
 			position: absolute;
-			height: 2px;
+			height: 3px;
 			left: 0;
 			right: 0;
 			bottom: -8px;
@@ -69,6 +69,71 @@
 		}
 	}
 
+	&__mobile-links {
+		width: 100%;
+		justify-content: center;
+		padding-top: rem(50);
+		position: relative;
+		display: none;
+		height: 90px;
+
+		select {
+			appearance: none;
+			background-color: transparent;
+			border: none;
+			padding: 0 1em 0 0;
+			margin: 0;
+			width: 100%;
+			font-family: inherit;
+			font-size: inherit;
+			cursor: inherit;
+			line-height: inherit;
+			outline: none;
+		}
+
+		select,
+		.select:after {
+			grid-area: select;
+		}
+
+		select:focus + .focus {
+			position: absolute;
+			top: -1px;
+			left: -1px;
+			right: -1px;
+			bottom: -1px;
+			border: 2px solid black;
+			border-radius: inherit;
+		}
+
+		.select {
+			width: 100%;
+			min-width: 15ch;
+			max-width: 30ch;
+			border: 1px solid black;
+			// border-radius: 0.25em;
+			padding: 0.25em 0.5em;
+			font-size: 1.25rem;
+			cursor: pointer;
+			line-height: 1.1;
+			background-color: white;
+			background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+			display: grid;
+			grid-template-areas: 'select';
+			align-items: center;
+			position: relative;
+
+			&::after {
+				content: '';
+				width: 0.8em;
+				height: 0.5em;
+				background-color: black;
+				clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+				justify-self: end;
+			}
+		}
+	}
+
 	&__props {
 		margin-top: rem(120px);
 		display: grid;
@@ -76,6 +141,14 @@
 		column-gap: rem(40px);
 		row-gap: rem(60px);
 		justify-items: center;
+		overflow: hidden;
+	}
+
+	&__white {
+		height: 150px;
+		width: 100%;
+		background-color: $mainWhite;
+		z-index: 100;
 	}
 }
 
@@ -91,15 +164,31 @@
 			column-gap: rem(15px);
 		}
 
-		&__mainlinks {
+		&__links {
 			display: none;
+		}
+
+		&__mobile-links {
+			display: flex;
 		}
 	}
 }
 
 .selected {
-	color: #000;
-	&::before {
+	color: black;
+	font-weight: 600;
+	// border-bottom: black solid 2px;
+
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		height: 2px;
+		left: 0;
+		right: 0;
+		bottom: -8px;
+		background-color: $mainBlack;
 		opacity: 1;
+		transition: opacity 200ms ease;
 	}
 }
