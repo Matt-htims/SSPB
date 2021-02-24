@@ -1,20 +1,14 @@
 const Prop = require('../models/Prop');
 
 const getAllProps = async (req, res) => {
-	const aggregateQuery = Prop.aggregate();
-
-	Prop.aggregatePaginate(
-		aggregateQuery,
-		{ page: req.query.p, limit: 25 },
-		(err, result) => {
-			if (err) {
-				console.error(err);
-				res.status(500).json({ message: 'Server Error' });
-			} else {
-				res.json(result);
-			}
+	Prop.paginate({}, { page: req.query.p, limit: 30 }, (err, result) => {
+		if (err) {
+			console.error(err);
+			res.status(500).json({ message: 'Server Error' });
+		} else {
+			res.json(result);
 		}
-	);
+	});
 
 	// try {
 	// 	const props = await Prop.find({});
@@ -27,11 +21,9 @@ const getAllProps = async (req, res) => {
 };
 
 const getPropsByCat = async (req, res) => {
-	const aggregateQuery = Prop.aggregate().match({ type: req.query.q });
-
-	Prop.aggregatePaginate(
-		aggregateQuery,
-		{ page: req.query.p, limit: 25 },
+	Prop.paginate(
+		{ type: req.query.q },
+		{ page: req.query.p, limit: 30 },
 		(err, result) => {
 			if (err) {
 				console.error(err);
@@ -41,6 +33,7 @@ const getPropsByCat = async (req, res) => {
 			}
 		}
 	);
+
 	// try {
 	// 	const props = await Prop.find({ type: req.query.q });
 

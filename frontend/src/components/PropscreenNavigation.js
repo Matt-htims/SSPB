@@ -32,6 +32,7 @@ const PropscreenNavigation = () => {
 				<div className="propsscreen__linksone">
 					<ul>
 						<li
+							// tabIndex="0"
 							className={cat === 'all' ? 'selected' : ''}
 							onClick={() => {
 								searchAllHandler();
@@ -41,6 +42,7 @@ const PropscreenNavigation = () => {
 							All
 						</li>
 						<li
+							// tabIndex="0"
 							className={cat === 'marbleAndStone' ? 'selected' : ''}
 							onClick={() => {
 								searchByCategoryHandler(1, 'ST', 'M');
@@ -50,6 +52,7 @@ const PropscreenNavigation = () => {
 							Marble &amp; Stone
 						</li>
 						<li
+							// tabIndex="0"
 							className={cat === 'metalSurfaces' ? 'selected' : ''}
 							onClick={() => {
 								searchByCategoryHandler(1, 'MS');
@@ -59,6 +62,7 @@ const PropscreenNavigation = () => {
 							Metal Surfaces
 						</li>
 						<li
+							// tabIndex="0"
 							className={cat === 'misc' ? 'selected' : ''}
 							onClick={() => {
 								searchByCategoryHandler(1, 'MM', 'MO', 'MW', 'MCT');
@@ -68,6 +72,7 @@ const PropscreenNavigation = () => {
 							Miscellaneous
 						</li>
 						<li
+							// tabIndex="0"
 							className={cat === 'paintedBackgrounds' ? 'selected' : ''}
 							onClick={() => {
 								searchByCategoryHandler(1, 'PB');
@@ -81,6 +86,7 @@ const PropscreenNavigation = () => {
 				<div className="propsscreen__linkstwo">
 					<ul>
 						<li
+							// tabIndex="0"
 							className={cat === 'paintedMetalTables' ? 'selected' : ''}
 							onClick={() => {
 								searchByCategoryHandler(1, 'PMT');
@@ -90,6 +96,7 @@ const PropscreenNavigation = () => {
 							Painted Metal Tables
 						</li>
 						<li
+							// tabIndex="0"
 							className={cat === 'paintedWoods' ? 'selected' : ''}
 							onClick={() => {
 								searchByCategoryHandler(1, 'PWS');
@@ -99,6 +106,7 @@ const PropscreenNavigation = () => {
 							Painted Woods
 						</li>
 						<li
+							// tabIndex="0"
 							className={cat === 'tables' ? 'selected' : ''}
 							onClick={() => {
 								searchByCategoryHandler(1, 'T');
@@ -108,6 +116,7 @@ const PropscreenNavigation = () => {
 							Tables
 						</li>
 						<li
+							// tabIndex="0"
 							className={cat === 'woodBoards' ? 'selected' : ''}
 							onClick={() => {
 								searchByCategoryHandler(1, 'BB', 'IPB');
@@ -117,6 +126,7 @@ const PropscreenNavigation = () => {
 							Wood Boards
 						</li>
 						<li
+							// tabIndex="0"
 							className={cat === 'woodTableTops' ? 'selected' : ''}
 							onClick={() => {
 								searchByCategoryHandler(1, 'WTT');

@@ -7,6 +7,7 @@
 	background: $mainWhite;
 	z-index: 43;
 	top: rem(100);
+	overflow: hidden;
 
 	&__container {
 		margin-top: rem(30);
@@ -25,7 +26,8 @@
 
 		img {
 			height: 80%;
-			transform: rotate(90deg);
+			width: 80%;
+			transform: rotate(0deg);
 		}
 	}
 

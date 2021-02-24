@@ -5,9 +5,13 @@ import phone from '../public/phoneBlack.svg';
 import mail from '../public/mailBlack.svg';
 import location from '../public/locationBlack.svg';
 
+//	Components
+import ScrollTop from '../components/ScrollTop';
+
 const ContactScreen = () => {
 	return (
 		<div className="contactscreen">
+			<ScrollTop />
 			<div className="contactscreen__container">
 				<div className="contactscreen__title">
 					<img src={logo} alt="" />

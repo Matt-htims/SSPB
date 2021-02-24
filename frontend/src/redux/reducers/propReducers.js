@@ -10,7 +10,13 @@ export const getPropsReducer = (state = { props: [] }, action) => {
 		case actionTypes.GET_PROPS_SUCCESS:
 			return {
 				loading: false,
-				props: action.payload,
+				props: action.payload.docs,
+				pageDetails: {
+					page: action.payload.page,
+					totalPages: action.payload.totalPages,
+					hasNextPage: action.payload.hasNextPage,
+					nextPage: action.payload.nextPage,
+				},
 			};
 		case actionTypes.GET_PROPS_FAIL:
 			return {
@@ -23,19 +29,16 @@ export const getPropsReducer = (state = { props: [] }, action) => {
 				loading: true,
 			};
 		case actionTypes.UPDATE_PROPS_SUCCESS:
-			const { docs, page, hasNextPage, nextPage, totalPages } = action.payload;
-			const prevDocs = [...state.props.docs];
-			const newDocs = [...prevDocs, ...docs];
-			const updatedState = {
-				page,
-				hasNextPage,
-				nextPage,
-				docs: newDocs,
-				totalPages,
-			};
 			return {
+				...state,
 				loading: false,
-				props: updatedState,
+				props: [...state.props, ...action.payload.docs],
+				pageDetails: {
+					page: action.payload.page,
+					totalPages: action.payload.totalPages,
+					hasNextPage: action.payload.hasNextPage,
+					nextPage: action.payload.nextPage,
+				},
 			};
 		case actionTypes.UPDATE_PROPS_FAIL:
 			return {

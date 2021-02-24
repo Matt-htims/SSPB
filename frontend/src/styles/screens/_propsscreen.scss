@@ -134,6 +134,31 @@
 		}
 	}
 
+	&__loadmorecontainer {
+		display: flex;
+		justify-content: center;
+		padding-top: rem(80);
+	}
+
+	&__loadmore {
+		color: $mainBlack;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-weight: 500;
+		background: #ffffff;
+		padding: 20px;
+		border: 2px solid #494949;
+		display: inline-block;
+		transition: all 0.4s ease 0s;
+		cursor: pointer;
+		&:hover {
+			color: #ffffff;
+			background: #78838d;
+			border-color: #78838d;
+			transition: all 0.4s ease 0s;
+		}
+	}
+
 	&__props {
 		margin-top: rem(120px);
 		display: grid;
@@ -145,7 +170,7 @@
 	}
 
 	&__white {
-		height: 150px;
+		height: rem(80);
 		width: 100%;
 		background-color: $mainWhite;
 		z-index: 100;
