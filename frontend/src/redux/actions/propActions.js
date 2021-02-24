@@ -5,7 +5,7 @@ export const getProps = () => async dispatch => {
 	try {
 		dispatch({ type: actionTypes.GET_PROPS_REQUEST });
 
-		const { data } = await axios.get('/api/props');
+		const { data } = await axios.get(`/api/props?p=1`);
 
 		dispatch({
 			type: actionTypes.GET_PROPS_SUCCESS,
@@ -22,12 +22,33 @@ export const getProps = () => async dispatch => {
 	}
 };
 
-export const getPropsByCat = (q, q2, q3, q4) => async dispatch => {
+export const updateProps = page => async dispatch => {
+	try {
+		dispatch({ type: actionTypes.UPDATE_PROPS_REQUEST });
+
+		const { data } = await axios.get(`api/props?p=${page}`);
+
+		dispatch({
+			type: actionTypes.UPDATE_PROPS_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: actionTypes.UPDATE_PROPS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};
+
+export const getPropsByCat = (p, q, q2, q3, q4) => async dispatch => {
 	try {
 		dispatch({ type: actionTypes.GET_PROPS_REQUEST });
 
 		const { data } = await axios.get(
-			`/api/props/category?q=${q}&q=${q2}&q=${q3}&q=${q4}`
+			`/api/props/category?p=${p}&q=${q}&q=${q2}&q=${q3}&q=${q4}`
 		);
 
 		dispatch({
@@ -37,6 +58,29 @@ export const getPropsByCat = (q, q2, q3, q4) => async dispatch => {
 	} catch (error) {
 		dispatch({
 			type: actionTypes.GET_PROPS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};
+
+export const updatePropsByCat = (p, q, q2, q3, q4) => async dispatch => {
+	try {
+		dispatch({ type: actionTypes.UPDATE_PROPS_REQUEST });
+
+		const { data } = await axios.get(
+			`/api/props/category?p=${p}&q=${q}&q=${q2}&q=${q3}&q=${q4}`
+		);
+
+		dispatch({
+			type: actionTypes.UPDATE_PROPS_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: actionTypes.UPDATE_PROPS_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

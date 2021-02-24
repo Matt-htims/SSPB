@@ -29,7 +29,7 @@ const IndivProp = () => {
 					<div className="indivprop__container">
 						<div className="indivprop__image">
 							<img
-								src="https://www.inderkitchen.co.uk/ekmps/shops/inderkitchen/images/blanco-wood-chopping-board-225362-11387-p.jpg"
+								src={`https://cdn.image4.io/gallon/${prop.code}.jpg`}
 								alt="board"
 							/>
 						</div>

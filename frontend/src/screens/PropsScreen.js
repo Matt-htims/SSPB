@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+<<<<<<< HEAD
 import { useEffect, useState, lazy, Suspense } from 'react';
 
 //	Redux
@@ -14,19 +15,27 @@ import {
 // import Prop from '../components/Prop';
 import IndivProp from '../components/IndivProp';
 const Prop = lazy(() => import('../components/Prop'));
+=======
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+//	Components
+import IndivProp from '../components/IndivProp';
+import PropscreenMobileNavigation from '../components/PropscreenMobileNavigation';
+import PropscreenNavigation from '../components/PropscreenNavigation';
+import PropscreenPropContainer from '../components/PropscreenPropContainer';
+import ScrollTop from '../components/ScrollTop';
+
+import { updateProps, updatePropsByCat } from '../redux/actions/propActions';
+>>>>>>> paginatedData
 
 const PropsScreen = ({ setPropToggle }) => {
-	const { id } = useParams();
 	const dispatch = useDispatch();
+	const { id } = useParams();
 
 	const getProps = useSelector(state => state.getProps);
-	const { props, loading, error } = getProps;
-
-	const propDetails = useSelector(state => state.getPropDetails);
-
-	useEffect(() => {
-		dispatch(listProps());
-	}, [dispatch]);
+	const { cat } = useSelector(state => state.currentCategory);
+	const { props, loading, error, pageDetails } = getProps;
 
 	useEffect(() => {
 		if (id) {
@@ -36,92 +45,59 @@ const PropsScreen = ({ setPropToggle }) => {
 		}
 	});
 
-	//	Handlers
-	const searchByCategoryHandler = (q1, q2, q3, q4) => {
-		dispatch(getPropsByCat(q1, q2, q3, q4));
-	};
-
-	const searchAllHandler = () => {
-		dispatch(listProps());
+	const loadMoreHandler = () => {
+		if (cat === 'all') {
+			dispatch(updateProps(pageDetails.nextPage));
+		} else {
+			switch (cat) {
+				case 'marbleAndStone':
+					dispatch(updatePropsByCat(pageDetails.nextPage, 'ST', 'M'));
+					break;
+				case 'metalSurfaces':
+					dispatch(updatePropsByCat(pageDetails.nextPage, 'MS'));
+					break;
+				case 'misc':
+					dispatch(
+						updatePropsByCat(pageDetails.nextPage, 'MM', 'MO', 'MW', 'MCT')
+					);
+					break;
+				case 'paintedBackgrounds':
+					dispatch(updatePropsByCat(pageDetails.nextPage, 'PB'));
+					break;
+				case 'paintedMetalTables':
+					dispatch(updatePropsByCat(pageDetails.nextPage, 'PMT'));
+					break;
+				case 'paintedWoods':
+					dispatch(updatePropsByCat(pageDetails.nextPage, 'PWS'));
+					break;
+				case 'tables':
+					dispatch(updatePropsByCat(pageDetails.nextPage, 'T'));
+					break;
+				case 'woodBoards':
+					dispatch(updatePropsByCat(pageDetails.nextPage, 'BB', 'IPB'));
+					break;
+				case 'woodTableTops':
+					dispatch(updatePropsByCat(pageDetails.nextPage, 'WTT'));
+					break;
+			}
+		}
 	};
 
 	return (
 		<div className="propsscreen">
+			<ScrollTop />
 			{id && <IndivProp />}
 			<h2 className="propsscreen__title">The Collection</h2>
-			<div className="propsscreen__links">
-				<div className="propsscreen__linksone">
-					<ul>
-						<li onClick={searchAllHandler}>All</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('ST', 'M');
-							}}
-						>
-							Marble &amp; Stone
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('MS');
-							}}
-						>
-							Metal Surfaces
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('MM', 'MO', 'MW', 'MCT');
-							}}
-						>
-							Miscellaneous
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('PB');
-							}}
-						>
-							Painted Backgrounds
-						</li>
-					</ul>
+			<PropscreenMobileNavigation />
+			<PropscreenNavigation />
+			<PropscreenPropContainer />
+			{!loading && pageDetails && pageDetails.hasNextPage && (
+				<div className="propsscreen__loadmorecontainer">
+					<div className="propsscreen__loadmore" onClick={loadMoreHandler}>
+						<p>Load More</p>
+					</div>
 				</div>
-				<div className="propsscreen__linkstwo">
-					<ul>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('PMT');
-							}}
-						>
-							Painted Metal Tables
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('PWS');
-							}}
-						>
-							Painted Woods
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('T');
-							}}
-						>
-							Tables
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('BB', 'IPB');
-							}}
-						>
-							Wood Boards
-						</li>
-						<li
-							onClick={() => {
-								searchByCategoryHandler('WTT');
-							}}
-						>
-							Wood Table Tops
-						</li>
-					</ul>
-				</div>
+<<<<<<< HEAD
 			</div>
 			<div className="propsscreen__props">
 				{loading ? (
@@ -142,6 +118,10 @@ const PropsScreen = ({ setPropToggle }) => {
 					))
 				)}
 			</div>
+=======
+			)}
+			<div className="propsscreen__white"></div>
+>>>>>>> paginatedData
 		</div>
 	);
 };
