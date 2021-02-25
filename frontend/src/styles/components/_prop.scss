@@ -4,17 +4,17 @@
 	cursor: pointer;
 	position: relative;
 
-	&::before {
-		content: '';
-		position: absolute;
-		display: block;
-		right: -21px;
-		bottom: 0px;
-		height: 700px;
-		width: 1px;
-		background-color: $mainBlack;
-		z-index: 1;
-	}
+	// &::before {
+	// 	content: '';
+	// 	position: absolute;
+	// 	display: block;
+	// 	right: -21px;
+	// 	bottom: 0px;
+	// 	height: 700px;
+	// 	width: 1px;
+	// 	background-color: $mainBlack;
+	// 	z-index: 1;
+	// }
 
 	&__image {
 		display: flex;
@@ -54,6 +54,17 @@
 	}
 }
 
+@media (max-width: 1395px) {
+	.prop {
+		&__image {
+			height: 65%;
+			img {
+				transform: rotate(0deg);
+			}
+		}
+	}
+}
+
 @media (max-width: 960px) {
 	.prop {
 		height: rem(400);
@@ -78,17 +89,6 @@
 
 		&__textcontainer {
 			height: 35%;
-		}
-	}
-}
-
-@media (max-width: 1395px) {
-	.prop {
-		&__image {
-			height: 65%;
-			img {
-				transform: rotate(0deg);
-			}
 		}
 	}
 }

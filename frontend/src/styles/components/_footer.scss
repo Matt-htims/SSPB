@@ -199,8 +199,12 @@
 			}
 
 			a {
-				font-size: rem(14);
+				font-size: rem(10);
+				letter-spacing: 2px;
 			}
+		}
+		&__copy {
+			font-size: rem(10);
 		}
 	}
 }

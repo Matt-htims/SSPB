@@ -1,21 +1,4 @@
 import { useParams, Link } from 'react-router-dom';
-<<<<<<< HEAD
-import { useEffect, useState, lazy, Suspense } from 'react';
-
-//	Redux
-import { useSelector, useDispatch } from 'react-redux';
-
-//	Actions
-import {
-	getProps as listProps,
-	getPropsByCat,
-} from '../redux/actions/propActions';
-
-//	Components
-// import Prop from '../components/Prop';
-import IndivProp from '../components/IndivProp';
-const Prop = lazy(() => import('../components/Prop'));
-=======
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -27,12 +10,11 @@ import PropscreenPropContainer from '../components/PropscreenPropContainer';
 import ScrollTop from '../components/ScrollTop';
 
 import { updateProps, updatePropsByCat } from '../redux/actions/propActions';
->>>>>>> paginatedData
 
 const PropsScreen = ({ setPropToggle }) => {
 	const dispatch = useDispatch();
 	const { id } = useParams();
-
+	const propDetails = useSelector(state => state.getPropDetails);
 	const getProps = useSelector(state => state.getProps);
 	const { cat } = useSelector(state => state.currentCategory);
 	const { props, loading, error, pageDetails } = getProps;
@@ -86,7 +68,7 @@ const PropsScreen = ({ setPropToggle }) => {
 	return (
 		<div className="propsscreen">
 			<ScrollTop />
-			{id && <IndivProp />}
+			{!propDetails.loading && id ? <IndivProp /> : ''}
 			<h2 className="propsscreen__title">The Collection</h2>
 			<PropscreenMobileNavigation />
 			<PropscreenNavigation />
@@ -97,31 +79,8 @@ const PropsScreen = ({ setPropToggle }) => {
 						<p>Load More</p>
 					</div>
 				</div>
-<<<<<<< HEAD
-			</div>
-			<div className="propsscreen__props">
-				{loading ? (
-					<h2>Loading...</h2>
-				) : error ? (
-					<h2>{error}</h2>
-				) : (
-					props.map(prop => (
-						<Suspense fallback={<div>Loading...</div>}>
-							<Prop
-								propId={prop._id}
-								key={prop._id}
-								propCode={prop.code}
-								description={prop.description}
-								number={prop.number}
-							/>
-						</Suspense>
-					))
-				)}
-			</div>
-=======
 			)}
 			<div className="propsscreen__white"></div>
->>>>>>> paginatedData
 		</div>
 	);
 };

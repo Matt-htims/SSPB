@@ -62,8 +62,9 @@
 			color: #1d1d1d;
 		}
 
-		.size {
-			color: #575757;
+		#size {
+			color: #000;
+			font-weight: 400;
 		}
 	}
 
@@ -119,11 +120,21 @@
 @media (max-width: 600px) {
 	.indivprop {
 		width: 88%;
+		height: 70%;
+		max-height: 550px;
 		left: 6%;
 		text-align: center;
 		&__textcontainer {
 			flex-direction: column;
 			justify-content: space-between;
+		}
+
+		.text {
+			height: 40%;
+		}
+
+		&__image {
+			height: 60%;
 		}
 
 		&__righttext {

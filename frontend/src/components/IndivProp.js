@@ -38,7 +38,7 @@ const IndivProp = () => {
 								<div className="indivprop__lefttext">
 									<h4>{prop.code}</h4>
 									<p className="description">{prop.description}</p>
-									<p className="size">{prop.size}</p>
+									<p id="size">{prop.size}</p>
 								</div>
 								<div className="indivprop__righttext">
 									<p className="cost">{`${prop.hireCost} per week`}</p>

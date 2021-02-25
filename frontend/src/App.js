@@ -20,10 +20,11 @@ function App() {
 	const [propToggle, setPropToggle] = useState(false);
 
 	const toggle = () => setMenuToggle(!menuToggle);
+	const close = () => setMenuToggle(false);
 
 	return (
 		<Router>
-			<Navbar click={toggle} show={menuToggle} />
+			<Navbar click={toggle} show={menuToggle} close={close} />
 			<MobileMenu show={menuToggle} click={toggle} />
 			<Backdrop
 				show={menuToggle}
