@@ -10,31 +10,43 @@ import Map from '../components/Map';
 //	Components
 import ScrollTop from '../components/ScrollTop';
 
+//	Animations
+import { motion } from 'framer-motion';
+
+import { lineAnimation, pageAnimation, fade } from '../animation';
+
 const ContactScreen = () => {
 	return (
 		<>
 			<ScrollTop />
-			<div className="contactscreen">
+			<motion.div
+				variants={pageAnimation}
+				exit="exit"
+				initial="hidden"
+				animate="show"
+				className="contactscreen"
+			>
 				<div className="contactscreen__container">
-					<div className="contactscreen__title">
+					<motion.div variants={fade} className="contactscreen__title">
 						<img src={logo} alt="" />
 						<h2>Contact us</h2>
-					</div>
+					</motion.div>
+					<motion.div variants={lineAnimation} className="line"></motion.div>
 					<div className="contactscreen__main">
-						<div className="contactscreen__contact">
+						<motion.div variants={fade} className="contactscreen__contact">
 							<div className="contactscreen__phone">
 								<a href="tel:02087495888">
 									<img src={phone} alt="" />
 									<p>0208 749 5888</p>
 								</a>
 							</div>
-							<div className="contactscreen__email">
+							<motion.div variants={fade} className="contactscreen__email">
 								<a href="mailto:simon@simonsmithphotography.com">
 									<img src={mail} alt="" />
 									<p>simon@simonsmithphotography.com</p>
 								</a>
-							</div>
-							<div className="contactscreen__location">
+							</motion.div>
+							<motion.div variants={fade} className="contactscreen__location">
 								<img src={location} alt="" />
 								<div className="footer__address">
 									<p className="first-line">6 Sun Studios</p>
@@ -43,14 +55,14 @@ const ContactScreen = () => {
 									<p>London</p>
 									<p>W3 0RX</p>
 								</div>
-							</div>
-						</div>
-						<div className="contactscreen__map">
+							</motion.div>
+						</motion.div>
+						<motion.div variants={fade} className="contactscreen__map">
 							<Map />
-						</div>
+						</motion.div>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 		</>
 	);
 };

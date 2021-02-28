@@ -130,18 +130,30 @@
 		}
 
 		.text {
+			height: 35%;
+		}
+
+		&__image {
+			height: 65%;
+		}
+
+		&__righttext {
+			.cost {
+				padding-top: rem(20);
+				text-align: center;
+			}
+		}
+	}
+}
+
+@media (max-width: 400px) {
+	.indivprop {
+		.text {
 			height: 40%;
 		}
 
 		&__image {
 			height: 60%;
-		}
-
-		&__righttext {
-			.cost {
-				padding-top: rem(14);
-				text-align: center;
-			}
 		}
 	}
 }

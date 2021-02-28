@@ -69,16 +69,16 @@
 	.prop {
 		height: rem(400);
 
-		&::before {
-			content: '';
-			position: absolute;
-			display: block;
-			right: -8px;
-			height: 700px;
-			width: 1px;
-			opacity: 0;
-			background-color: $mainBlack;
-		}
+		// &::before {
+		// 	content: '';
+		// 	position: absolute;
+		// 	display: block;
+		// 	right: -8px;
+		// 	height: 700px;
+		// 	width: 1px;
+		// 	opacity: 0;
+		// 	background-color: $mainBlack;
+		// }
 
 		&__image {
 			height: 65%;
@@ -90,5 +90,11 @@
 		&__textcontainer {
 			height: 35%;
 		}
+	}
+}
+
+@media (max-width: 600px) {
+	.prop {
+		margin-bottom: rem(40);
 	}
 }

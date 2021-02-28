@@ -15,6 +15,9 @@ import Navbar from './components/Navbar';
 import Backdrop from './components/Backdrop';
 import Footer from './components/Footer';
 
+//	Animation
+import { AnimatePresence } from 'framer-motion';
+
 function App() {
 	const [menuToggle, setMenuToggle] = useState(false);
 	const [propToggle, setPropToggle] = useState(false);

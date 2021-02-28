@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 // Icons
-
+import photographyLogo from '../public/photography-logo.svg';
 import phone from '../public/phoneWhite.svg';
 import mail from '../public/mailWhite.svg';
 import location from '../public/locationWhite.svg';
@@ -17,6 +17,9 @@ const Footer = () => {
 					</p>
 					<a href="www.simonsmithphotography.co.uk" className="footer__link">
 						www.simonsmithphotography.co.uk
+					</a>
+					<a href="www.simonsmithphotography.co.uk">
+						<img src={photographyLogo} alt="" />
 					</a>
 				</div>
 				<div className="footer__contact">

@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import logo from '../public/Logo.svg';
 
 const Navbar = ({ click, show, close }) => {
 	return (
-		<nav className="navbar sticky">
+		<nav className={`navbar sticky ${show ? 'open' : ''}`}>
 			<div className="navbar__logo">
 				<Link to="/" onClick={close}>
 					<img src={logo} alt="" />
@@ -12,14 +12,18 @@ const Navbar = ({ click, show, close }) => {
 			</div>
 			<ul className="navbar__links ">
 				<li>
-					<Link to="/props">PROPS</Link>
+					<NavLink activeClassName="active" to="/props">
+						PROPS
+					</NavLink>
 				</li>
 				<li>
-					<Link to="/contact">CONTACT</Link>
+					<NavLink activeClassName="active" to="/contact">
+						CONTACT
+					</NavLink>
 				</li>
 			</ul>
 
-			<div onClick={click} className={`navbar__toggle ${show ? 'open' : ''}`}>
+			<div onClick={click} className={`navbar__toggle`}>
 				<span></span>
 				<span></span>
 				<span></span>

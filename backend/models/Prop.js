@@ -29,6 +29,8 @@ const propSchema = new mongoose.Schema({
 	_id: { type: mongoose.SchemaTypes.ObjectId, ref: 'prop' },
 });
 
+propSchema.index({ '$**': 'text' });
+
 propSchema.plugin(mongoosePaginate);
 
 const Prop = mongoose.model('prop', propSchema);

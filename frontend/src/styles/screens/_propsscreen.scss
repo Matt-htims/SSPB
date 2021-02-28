@@ -7,7 +7,7 @@
 
 	&__title {
 		text-align: center;
-		width: 356px;
+		width: auto;
 		margin-top: rem(70px);
 		margin-left: auto;
 		margin-right: auto;
@@ -216,6 +216,7 @@
 		&__props {
 			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 			column-gap: rem(15px);
+			// display: block;
 		}
 
 		&__links {
@@ -229,10 +230,9 @@
 }
 
 @media (max-width: 600px) {
-	.propscreen {
+	.propsscreen {
 		&__props {
 			display: block;
-			background-color: red;
 		}
 	}
 }

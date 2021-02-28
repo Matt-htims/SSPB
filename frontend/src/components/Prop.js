@@ -1,13 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Prop = ({ propId, propCode, description, number }) => {
-	// "https://www.inderkitchen.co.uk/ekmps/shops/inderkitchen/images/blanco-wood-chopping-board-225362-11387-p.jpg"
+//	Animations
+import { motion } from 'framer-motion';
+import { popup, fadeIn } from '../animation';
 
+const Prop = ({ propId, propCode, description }) => {
 	return (
 		<>
 			<Link to={`/props/${propId}`}>
-				<div className="prop__container">
+				<motion.div
+					variants={fadeIn}
+					initial="hidden"
+					animate="show"
+					className="prop__container"
+				>
 					<div className="prop">
 						<div className="prop__image">
 							<img
@@ -22,7 +29,7 @@ const Prop = ({ propId, propCode, description, number }) => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 			</Link>
 		</>
 	);

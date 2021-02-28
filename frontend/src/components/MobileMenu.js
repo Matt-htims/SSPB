@@ -1,9 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+//	Animation
+import { motion } from 'framer-motion';
+import { slideIn } from '../animation';
+
 const MobileMenu = ({ show, click }) => {
 	return show ? (
-		<div className={`mobilemenu`}>
+		<motion.div
+			variants={slideIn}
+			exit="exit"
+			initial="hidden"
+			animate="show"
+			className={`mobilemenu`}
+		>
 			<ul className="mobilemenu__links" onClick={click}>
 				<Link to="/">
 					<li>HOME</li>
@@ -15,7 +25,7 @@ const MobileMenu = ({ show, click }) => {
 					<li>CONTACT</li>
 				</Link>
 			</ul>
-		</div>
+		</motion.div>
 	) : null;
 };
 

@@ -14,11 +14,15 @@
 		padding-bottom: rem(80);
 	}
 
+	.line {
+		height: 1px;
+		background-color: $mainBlack;
+	}
+
 	&__title {
 		display: flex;
 		align-items: center;
 		padding-bottom: rem(45);
-		border-bottom: 1px solid #1e1e1e;
 
 		img {
 			height: rem(73);
